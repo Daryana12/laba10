@@ -1,0 +1,113 @@
+<html>
+<head>
+<script>
+var comparers = [
+function comp1(r1,r2) {
+return r1.date < r2.date;
+},
+
+function comp2(r1,r2) {
+return r1.date > r2.date;
+},
+
+function comp3(r1,r2) {
+return r1.text < r2.text;
+},
+
+function comp4(r1,r2) {
+console.log("ready");
+return r1.text > r2.text;
+},
+function comp5(r1,r2) {
+if (r1.time < time(10,00,00)) {
+return r1.date < r2.date; }
+}
+];
+
+
+function send() {
+var r = new Record (
+document.getElementById("newText").value,
+new Date ());
+records.push(r);
+displayRecords();
+}
+
+function time(date) {
+return ""+date.toLocaleTimeString();
+}
+
+function day(date) {
+return ""+date.toLocaleDateString();
+}
+
+function Record(text,date) {
+this.text=text;
+this.date=date;
+this.time = function() {
+return this.date.toLocaleTimeString();
+}
+this.day = function() {
+return this.date.toLocaleDateString();
+}
+}
+var records=[
+new Record("Проснулись улыбнулись",
+new Date(2020,11,02,12,00,00)),
+new Record("Заварила любимый молочный улун",
+new Date(2020,11,02,12,10,00)),
+new Record("Прочитала утренние новости",
+new Date(2020,11,02,12,20,00))
+];
+
+function displayRecords (){
+var text = ""; var odd = true;
+for (var i in records) {
+if (odd) {
+text += "<p style='background-color:lightyellow'>";
+} else {
+text += "<p style='background-color:lightpink'>";
+}
+odd = !odd;
+text += records[i].time() + " ";
+text += "<strong>" + records[i].day() + "</strong><br>";
+text += records[i].text + "</p>";
+}
+document.getElementById("recordsPlace").innerHTML = text;
+}
+
+function sort(compare) {
+var l = records.length;
+for (var i=0; i < l-1; i++) {
+var j_min = i;
+for (var j=i+1; j<l; j++) {
+if (compare(records[j],records[j_min])) {
+j_min=j;
+}
+}
+
+var r=records[j_min];
+records[j_min] = records[i];
+records[i] = r;
+}
+displayRecords();
+}
+
+
+</script>
+</head>
+
+<body onload="displayRecords ()">
+<div id="toolbar">
+<input type="text" id="newText"/>
+<input type="button" value="Добавить запись" onclick="send()"/>
+<input type="button" value="Показать только утренние записи" onclick="sort(comparers[4])"/>
+<input type="button" value="По дате >" onclick="sort(comparers[0])"/>
+<input type="button" value="По дате <" onclick="sort(comparers[1])"/>
+<input type="button" value="По алфавиту >" onclick="sort(comparers[2])"/>
+<input type="button" value="По алфавиту <" onclick="sort(comparers[3])"/>
+</div>
+
+<div id="recordsPlace"/>
+</body>
+</html>

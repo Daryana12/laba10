@@ -1,0 +1,76 @@
+<html>
+<head>
+<script>
+function draw() {
+var canvas=document.getElementById('canvas');
+var ctx=canvas.getContext('2d');
+ var canvas=document.getElementById('canvas');
+	var ctx=canvas.getContext('2d');
+	ctx.fillStyle='yellow';
+	ctx.fillRect(100,100,150,200);
+	//pryamoygol'nik
+	ctx.beginPath();
+	ctx.moveTo(100,100);
+	ctx.lineTo(175,50);
+	ctx.lineTo(250,100);
+	ctx.lineWidth=5;
+	ctx.strokeStyle='green';
+	ctx.stroke();
+	ctx.beginPath();
+	ctx.moveTo(100,100);
+	ctx.lineTo(175,50);
+	ctx.lineTo(250,100);
+	ctx.fillStyle='orange';
+	ctx.fill();
+	ctx.fillStyle='blue';
+	ctx.fillRect(90,200,170,100);
+ctx.beginPath();
+	ctx.moveTo(90,200);
+	ctx.lineTo(115,170);
+	ctx.lineTo(135,200);
+	ctx.fillStyle='blue';	
+	ctx.fill();
+ctx.beginPath();
+	ctx.moveTo(135,200);
+	ctx.lineTo(155,170);
+	ctx.lineTo(175,200);
+	ctx.fillStyle='blue';	
+	ctx.fill();
+ctx.beginPath();
+	ctx.moveTo(175,200);
+	ctx.lineTo(195,170);
+	ctx.lineTo(215,200);
+	ctx.fillStyle='blue';	
+	ctx.fill();
+ctx.beginPath();
+	ctx.moveTo(215,200);
+	ctx.lineTo(240,170);
+	ctx.lineTo(260,200);
+	ctx.fillStyle='blue';	
+	ctx.fill();
+ctx.beginPath();
+	ctx.moveTo(135,200);
+	ctx.lineTo(135,300);
+	ctx.lineWidth=5;
+	ctx.strokeStyle='brown';
+	ctx.stroke();
+ctx.beginPath();
+	ctx.moveTo(175,200);
+	ctx.lineTo(175,300);
+	ctx.lineWidth=5;
+	ctx.strokeStyle='brown';
+	ctx.stroke();
+ctx.beginPath();
+	ctx.moveTo(215,200);
+	ctx.lineTo(215,300);
+	ctx.lineWidth=5;
+	ctx.strokeStyle='brown';
+	ctx.stroke();
+	}
+</script>
+</head>
+<body onload="draw();">
+<canvas id="canvas" width="300" height="300">
+</canvas>
+</body>
+</html>
